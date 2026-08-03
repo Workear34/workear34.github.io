@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>大模型：概率编造的电子虚像 | 沃克尔试验场</title><meta name="author" content="Workear Zhao"><meta name="copyright" content="Workear Zhao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="作者注：本文写于 2025 年 7 月，系我早期的作品。该文章如今看来存在诸多不妥与夸大之处，在此仅供归档留存，请勿作为任何参考依据。   大模型：概率编造的电子虚像在ChatGPT刚出来之时，大模型还是个新奇的东西。人们惊叹于其魔法般的使用体验：能聊天、能写作、能解题、能翻译、还能写代码……彼时的人们认为，AI就是”第四次工业革命”。如今，2025年，大模型的能力早已不同往日：以DeepSeek">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大模型：概率编造的电子虚像">
+<meta property="og:url" content="https://workear34.github.io/2026/08/03/llm-hallucination/index.html">
+<meta property="og:site_name" content="沃克尔试验场">
+<meta property="og:description" content="作者注：本文写于 2025 年 7 月，系我早期的作品。该文章如今看来存在诸多不妥与夸大之处，在此仅供归档留存，请勿作为任何参考依据。   大模型：概率编造的电子虚像在ChatGPT刚出来之时，大模型还是个新奇的东西。人们惊叹于其魔法般的使用体验：能聊天、能写作、能解题、能翻译、还能写代码……彼时的人们认为，AI就是”第四次工业革命”。如今，2025年，大模型的能力早已不同往日：以DeepSeek">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://workear34.github.io/images/avatar.jpg">
+<meta property="article:published_time" content="2026-08-03T15:19:52.000Z">
+<meta property="article:modified_time" content="2026-08-02T16:00:00.000Z">
+<meta property="article:author" content="Workear Zhao">
+<meta property="article:tag" content="GPT">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="大模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://workear34.github.io/images/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "大模型：概率编造的电子虚像",
+  "url": "https://workear34.github.io/2026/08/03/llm-hallucination/",
+  "image": "https://workear34.github.io/images/avatar.jpg",
+  "datePublished": "2026-08-03T15:19:52.000Z",
+  "dateModified": "2026-08-02T16:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Workear Zhao",
+      "url": "https://workear34.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://workear34.github.io/2026/08/03/llm-hallucination/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '大模型：概率编造的电子虚像',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/images/index_img.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">沃克尔试验场</span></a><a class="nav-page-title" href="/"><span class="site-name">大模型：概率编造的电子虚像</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-circle-info"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">大模型：概率编造的电子虚像</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-03T15:19:52.000Z" title="发表于 2026-08-03 23:19:52">2026-08-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-02T16:00:00.000Z" title="更新于 2026-08-03 00:00:00">2026-08-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div class="note info simple"><p>作者注：本文写于 2025 年 7 月，系我早期的作品。该文章如今看来存在诸多不妥与夸大之处，在此仅供归档留存，<strong>请勿作为任何参考依据</strong>。</p>
+</div>
+
+<h1 id="大模型：概率编造的电子虚像"><a href="#大模型：概率编造的电子虚像" class="headerlink" title="大模型：概率编造的电子虚像"></a>大模型：概率编造的电子虚像</h1><p>在ChatGPT刚出来之时，大模型还是个新奇的东西。人们惊叹于其魔法般的使用体验：能聊天、能写作、能解题、能翻译、还能写代码……彼时的人们认为，AI就是”第四次工业革命”。如今，2025年，大模型的能力早已不同往日：以DeepSeek为首的推理大模型将大模型能力带上一个新的台阶。但人们对大模型的抱怨却越来越重：内容空洞、逻辑混乱、充满幻觉，大模型似乎变成了一个只能吐出”正确答案”的冰冷机器。与此同时，大模型训练数据版权纠纷、大模型是否会替代人类。在我看来，现在的大模型不过是用概率编制的电子幻想，其并非无所不能，且有很大的安全隐患。</p>
+<h2 id="大模型从原理上就决定了它无法生成准确的内容。"><a href="#大模型从原理上就决定了它无法生成准确的内容。" class="headerlink" title="大模型从原理上就决定了它无法生成准确的内容。"></a>大模型从原理上就决定了它无法生成准确的内容。</h2><p>目前所有的大模型都基于transformer这一个架构。这一架构使得大模型输出文本的本质就是”概率论”：大模型通过让用户输入的一个个需求拆解成token，再通过自己从语料库中学到的知识和上下文进行推理，预测下一个token哪个token出现的概率最大。</p>
+<p>比如用户输入了”今天天气怎么样？”，当用户点击发送时，大模型就会启动推理，开始预测第一个token出现的概率：</p>
+<p>今天 概率80%</p>
+<p>根据 概率40%</p>
+<p>你好 概率20%</p>
+<p>……</p>
+<p>这时候大模型往往会根据token出现概率，结合其设定（例如Temperature、Top-k）挑选token输出。</p>
+<p>这里存在的致命问题就是，大模型其实并不知道用户输入的需求也不知道自己生成的文本，他只会根据一系列复杂的原理进行预测，这就导致了大模型从原理上就不可避免地会输出错误内容。还是拿上面的例子举例，大模型其实根本就不知道你今天要问他天气，也不知道今天的天气的真实情况如何，就容易生成”今天天气50℃”这样的错误信息。</p>
+<p>同样地，大模型产生幻觉的原理，也同样是其自身架构导致的：当用户提出需求而大模型却无法从语料库中找到对应的答案时，大模型往往会陷入”幻觉”，生成一堆看似很合理实则完全是虚假信息的内容（就像是”一本正经地胡说八道”）。例如你问他vtech（伟易达，一家总部位于香港的电子玩具公司）是什么公司，如果大模型没有网络搜索功能，那么他往往会输出错误的信息（”是的，我知道，vtech是一家连锁酒店，成立于1988年”）。</p>
+<p>种种以上因素决定了，大模型有概率，而且是很大概率会生成不正确、虚假的内容（”9.11比9.8大””strawberry有两个r””鲁迅和周树人并不是同一个人”）。</p>
+<h2 id="多数网络用户和社区并不认可大模型生成内容，甚至强烈排斥。"><a href="#多数网络用户和社区并不认可大模型生成内容，甚至强烈排斥。" class="headerlink" title="多数网络用户和社区并不认可大模型生成内容，甚至强烈排斥。"></a>多数网络用户和社区并不认可大模型生成内容，甚至强烈排斥。</h2><p>从大模型刚出来的时候，人们就发现它能以很快的速度生成看起来极其”精美”和”准确”的文本，于是一时间大模型遭到滥用：人们将大模型生成的许多看似完美实则并无价值的内容大量散布到网上。</p>
+<p>这严重污染了网络环境，导致网络上一时间大量”AI味”文章泛滥，更致命的是，大模型生产的内容往往具有误导性，很容易把人带偏产生错误观念，一旦人们对大模型生成的内容产生信任，深信不疑，后果更不堪设想。</p>
+<p>如今，许多用户仍沉浸在大模型带来的虚假的高效率中，更有甚者对大模型的使用已经达到了宁滥勿缺的程度。然而在另一面，许多亚文化社区和网友经历了大模型生成内容大量泛滥后，已经在这方面达成了共识：必须禁止大模型生成内容，保护高质量的人工内容保证其不被破坏。如今你再去看这些亚文化论坛、wiki等，发现上面都明确标明禁止发布任何AI生成内容。这就从另一个层面上反映了：大模型生成内容并不被更具准确性的高质量的内容社区和精英用户所认可，而是遭到强烈排斥。这一决定在现在看来无疑是正确的。</p>
+<h2 id="许多大公司使用的训练资料质量并不高，且会产生版权问题。"><a href="#许多大公司使用的训练资料质量并不高，且会产生版权问题。" class="headerlink" title="许多大公司使用的训练资料质量并不高，且会产生版权问题。"></a>许多大公司使用的训练资料质量并不高，且会产生版权问题。</h2><p>大模型跟人一样，也需要通过各种文本来训练自己的能力。其中也会产生问题。AI巨头们往往从网络上爬虫搜集文本，将其大量资料经过人工筛选之后再喂给模型进行训练。这又会产生问题：</p>
+<p>(1) 许多互联网社区，尤其是中文互联网社区，会将自己的高质量内容严格锁定在自己的平台内，不允许外界直接获取。这种现象被称为信息孤岛，这导致AI巨头在训练时无法让大模型读到更多真正有价值的高质量文本，进一步加剧了大模型的能力衰败。</p>
+<p>(2) 许多资料往往还有各式各样的版权，而目前没有明确的法律能界定AI公司通过这些版权数据训练出来大模型是否侵权。目前已经有事例证明了大模型容易一字不差地吐出自己训练过的版权文本。这也就是为什么大公司常常会与各种公司产生纠纷的原因。</p>
+<p>可是为什么即使开了网络搜索大模型也难以生成高质量内容的原因，因为本身的语料不足。同时版权风险进一步加剧了大模型生成内容在法律上的定位，毕竟谁也不想因为自己用大模型创作一部小说引发侵权而打官司。</p>
+<h2 id="大模型日益增长的能力已经超过了人们对大模型能力的需求。"><a href="#大模型日益增长的能力已经超过了人们对大模型能力的需求。" class="headerlink" title="大模型日益增长的能力已经超过了人们对大模型能力的需求。"></a>大模型日益增长的能力已经超过了人们对大模型能力的需求。</h2><p>就像科技界的安迪比尔定律一样，大模型带来的能力增长也很快会被人们提出更高要求的需求而消耗掉。ChatGPT刚推出时，人们惊叹于它什么活都能干，而如今能够深度思考的DeepSeek R1我们却会骂他幻觉严重，内容空洞。</p>
+<p>因为在ChatGPT刚出来的时候，人们往往提的都是写一首诗，写一首歌，帮我写一个Python贪吃蛇等等这样简单的需求。但到现在，人们对大模型的需求已早不止于此。很多人对大模型提出各种复杂的需求，这考验的是模型各项的综合能力，但凡有一个环节出了问题，就导致其会生成不准确的内容。加上现阶段的大模型只擅长于模仿，而不擅长于创造，其能力还无法做到优秀，而部分AI厂商为了让成绩好看，往往在一些训练过程中只让大模型背题而不学会方法，就像有一个人将AI测试题经过改动之后发现大模型能力综合下降了10%，更加导致了大模型生成内容的不准确性增加。</p>
+<p>**综上所述，大模型的内部架构就决定了其无法真正理解用户输出的文本和它生成的文本，很容易生成错误的虚假信息。**而其生成内容又具有高度的迷幻性，很容易让人深信不疑。除非哪一天大模型的底层架构进行改动大模型能够真正理解文本的含义，否则大模型生成的内容永远只是用概率编造的神话，用幻觉建造的城堡，永远不能保证其准确性和严密性，永远无法像人类一样真正的理解和思考。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://workear34.github.io">Workear Zhao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://workear34.github.io/2026/08/03/llm-hallucination/">https://workear34.github.io/2026/08/03/llm-hallucination/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://workear34.github.io" target="_blank">沃克尔试验场</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a><a class="post-meta__tags" href="/tags/GPT/">GPT</a><a class="post-meta__tags" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></div><div class="post-share"><div class="social-share" data-image="/images/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/07/25/dolphin-improve-graphic/" title="巧妙通过 Dolphin 模拟器自定义纹理加载功能 + Waifu2x-Extension-GUI 提升 GameCube/Wii 游戏画质"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">巧妙通过 Dolphin 模拟器自定义纹理加载功能 + Waifu2x-Extension-GUI 提升 GameCube/Wii 游戏画质</div></div><div class="info-2"><div class="info-item-1">Dolphin 模拟器本身支持高清渲染，但由于游戏发行年代太久远、加上光盘容量大小限制等因素，游戏本身贴图的分辨率普遍较低。导致在高分辨率渲染下，贴图本身会显得模糊不清。你玩游戏时，虽然分辨率本身是高了，但游戏看起来还是很糊。但，我们可以巧妙借助 Dolphin 模拟器的提取游戏贴图功能 + 自定义纹理加载功能，和当下已成熟的 AI 图像无损放大技术，先设法提高游戏的贴图质量，再让模拟器加载这些处理过的高清贴图，从而达到提升画质的目的。经过个人实测，此方法不仅效果显著，而且操作方法也较为简单。可以试一下。 核心原理 让 Dolphin 模拟器在游戏运行时将游戏使用的原始贴图文件提取出来，...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Workear Zhao</div><div class="author-info-description">又菜又爱玩的菜鸡</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Workear34"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Workear34" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://qm.qq.com/q/7MYaDinkJ2" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="https://space.bilibili.com/3493136204564710" target="_blank" title="BiliBili"><i class="fab fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客刚刚建立，先发点个人之前的文章。。。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%EF%BC%9A%E6%A6%82%E7%8E%87%E7%BC%96%E9%80%A0%E7%9A%84%E7%94%B5%E5%AD%90%E8%99%9A%E5%83%8F"><span class="toc-number">1.</span> <span class="toc-text">大模型：概率编造的电子虚像</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BB%8E%E5%8E%9F%E7%90%86%E4%B8%8A%E5%B0%B1%E5%86%B3%E5%AE%9A%E4%BA%86%E5%AE%83%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%87%86%E7%A1%AE%E7%9A%84%E5%86%85%E5%AE%B9%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">大模型从原理上就决定了它无法生成准确的内容。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%95%B0%E7%BD%91%E7%BB%9C%E7%94%A8%E6%88%B7%E5%92%8C%E7%A4%BE%E5%8C%BA%E5%B9%B6%E4%B8%8D%E8%AE%A4%E5%8F%AF%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%94%9F%E6%88%90%E5%86%85%E5%AE%B9%EF%BC%8C%E7%94%9A%E8%87%B3%E5%BC%BA%E7%83%88%E6%8E%92%E6%96%A5%E3%80%82"><span class="toc-number">1.2.</span> <span class="toc-text">多数网络用户和社区并不认可大模型生成内容，甚至强烈排斥。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B8%E5%A4%9A%E5%A4%A7%E5%85%AC%E5%8F%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%AD%E7%BB%83%E8%B5%84%E6%96%99%E8%B4%A8%E9%87%8F%E5%B9%B6%E4%B8%8D%E9%AB%98%EF%BC%8C%E4%B8%94%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%89%88%E6%9D%83%E9%97%AE%E9%A2%98%E3%80%82"><span class="toc-number">1.3.</span> <span class="toc-text">许多大公司使用的训练资料质量并不高，且会产生版权问题。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%97%A5%E7%9B%8A%E5%A2%9E%E9%95%BF%E7%9A%84%E8%83%BD%E5%8A%9B%E5%B7%B2%E7%BB%8F%E8%B6%85%E8%BF%87%E4%BA%86%E4%BA%BA%E4%BB%AC%E5%AF%B9%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%83%BD%E5%8A%9B%E7%9A%84%E9%9C%80%E6%B1%82%E3%80%82"><span class="toc-number">1.4.</span> <span class="toc-text">大模型日益增长的能力已经超过了人们对大模型能力的需求。</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/03/llm-hallucination/" title="大模型：概率编造的电子虚像">大模型：概率编造的电子虚像</a><time datetime="2026-08-03T15:19:52.000Z" title="发表于 2026-08-03 23:19:52">2026-08-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/25/dolphin-improve-graphic/" title="巧妙通过 Dolphin 模拟器自定义纹理加载功能 + Waifu2x-Extension-GUI 提升 GameCube/Wii 游戏画质">巧妙通过 Dolphin 模拟器自定义纹理加载功能 + Waifu2x-Extension-GUI 提升 GameCube/Wii 游戏画质</a><time datetime="2026-07-24T16:00:00.000Z" title="发表于 2026-07-25 00:00:00">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/08/hello-world/" title="Hello World">Hello World</a><time datetime="2026-07-07T16:00:00.000Z" title="发表于 2026-07-08 00:00:00">2026-07-08</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2009 - 2026 By Workear Zhao</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.6.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.6.1"></script><script src="/js/main.js?v=5.6.1"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜点什么" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.6.1"></script></div></div></body></html>
